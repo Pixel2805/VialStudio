@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>VIAL STUDIO – Keratin & Botox Hîncești</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3EE;
+    --dark: #1A1714;
+    --warm: #C8A97E;
+    --mid: #6B5E52;
+    --light: #EDE8E1;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: rgba(247, 243, 238, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,169,126,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .nav-call {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--dark);
+    color: var(--cream);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background 0.3s, transform 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-call:active { transform: scale(0.96); }
+  .nav-call svg { width: 14px; height: 14px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 120px 24px 64px;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--warm);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(52px, 14vw, 88px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 32px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--warm);
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: var(--mid);
+    max-width: 280px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(107,94,82,0.2);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--mid);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: pulse-down 2s ease-in-out infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--warm), transparent);
+  }
+
+  @keyframes pulse-down {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.9; transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 72px 24px; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(200,169,126,0.3);
+  }
+
+  .section-title {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(34px, 9vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--dark); color: var(--cream); }
+
+  .services .section-label { color: var(--warm); }
+  .services .section-label::after { background: rgba(200,169,126,0.2); }
+  .services .section-title { color: var(--cream); }
+
+  .services-desc {
+    font-size: 14px;
+    color: rgba(247,243,238,0.55);
+    line-height: 1.75;
+    margin-bottom: 48px;
+    max-width: 320px;
+  }
+
+  .service-list { display: flex; flex-direction: column; gap: 0; }
+
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(247,243,238,0.08);
+    cursor: default;
+  }
+
+  .service-item:first-child { border-top: 1px solid rgba(247,243,238,0.08); }
+
+  .service-num {
+    font-family: 'Cormorant', serif;
+    font-size: 13px;
+    color: var(--warm);
+    opacity: 0.7;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .service-info { flex: 1; }
+
+  .service-name {
+    font-family: 'Cormorant', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 12px;
+    color: rgba(247,243,238,0.45);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+
+  .service-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warm);
+    opacity: 0.4;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── PROCESS VIDEO ── */
+  .process { padding: 72px 24px; }
+
+  .process-intro {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 48px;
+    max-width: 300px;
+  }
+
+  .video-stack { display: flex; flex-direction: column; gap: 20px; }
+
+  .video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--dark);
+    aspect-ratio: 9/16;
+    max-height: 520px;
+  }
+
+  .video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.9;
+  }
+
+  .video-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 32px 20px 24px;
+    background: linear-gradient(to top, rgba(26,23,20,0.88) 0%, transparent 100%);
+    color: var(--cream);
+  }
+
+  .video-step {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 6px;
+  }
+
+  .video-title {
+    font-family: 'Cormorant', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .video-desc {
+    font-size: 12px;
+    color: rgba(247,243,238,0.6);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* Play button overlay */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(247,243,238,0.15);
+    border: 1.5px solid rgba(247,243,238,0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .play-btn svg { width: 18px; height: 18px; fill: var(--cream); margin-left: 3px; }
+
+  .video-card.playing .play-btn { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  .video-card:not(.playing):hover .play-btn { transform: translate(-50%, -50%) scale(1.08); }
+
+  /* Placeholder for demo */
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #2A2420 0%, #1A1714 60%, #0E0C0A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(200,169,126,0.12) 0%, transparent 70%);
+  }
+
+  .placeholder-icon {
+    font-size: 48px;
+    opacity: 0.25;
+    z-index: 1;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--light); }
+
+  .about-body {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.85;
+    margin-bottom: 40px;
+  }
+
+  .about-highlight {
+    font-family: 'Cormorant', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.4;
+    border-left: 2px solid var(--warm);
+    padding-left: 20px;
+    margin: 36px 0;
+  }
+
+  .about-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .about-detail {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 20px 16px;
+  }
+
+  .about-detail-icon {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .about-detail-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  .about-detail-text {
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--dark); color: var(--cream); text-align: center; }
+  .contact .section-label { justify-content: center; color: var(--warm); }
+  .contact .section-label::after { display: none; }
+  .contact .section-title { color: var(--cream); }
+
+  .contact-sub {
+    font-size: 14px;
+    color: rgba(247,243,238,0.5);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .contact-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 32px;
+    background: var(--warm);
+    color: var(--dark);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .btn-primary:active { transform: scale(0.97); opacity: 0.9; }
+
+  .btn-outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 17px 32px;
+    border: 1px solid rgba(247,243,238,0.2);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .btn-outline:active { transform: scale(0.97); }
+
+  .contact-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: rgba(247,243,238,0.25);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .contact-divider::before,
+  .contact-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(247,243,238,0.12);
+  }
+
+  .contact-address {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(247,243,238,0.08);
+    font-size: 12px;
+    color: rgba(247,243,238,0.35);
+    line-height: 1.8;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(247,243,238,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant', serif;
+    font-size: 14px;
+    color: rgba(247,243,238,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(247,243,238,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── FADE IN ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up:nth-child(1) { transition-delay: 0s; }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+  .fade-up:nth-child(5) { transition-delay: 0.4s; }
+
+  /* ── DESKTOP ADJUSTMENTS ── */
+  @media (min-width: 640px) {
+    .hero { padding: 140px 48px 80px; }
+    section { padding: 100px 48px; }
+    .process .video-stack { flex-direction: row; flex-wrap: wrap; }
+    .video-card { flex: 1; min-width: 260px; }
+    nav { padding: 24px 48px; }
+    .contact, footer { padding: 100px 48px; }
+    footer { padding: 28px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Vial Studio</a>
+  <a href="tel:0798051710" class="nav-call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.2 2 2 0 012.09.006h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+    </svg>
+    Sună acum
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="position:relative;">
+  <div class="hero-badge fade-up">Hîncești</div>
+  <h1 class="fade-up">Păr <em>perfect</em><br>drept.</h1>
+  <p class="hero-sub fade-up">Keratin & Botox pentru păr. Rezultate vizibile de la prima vizită, pe termen lung.</p>
+  <div class="hero-stats fade-up">
+    <div>
+      <div class="stat-num">1.1K+</div>
+      <div class="stat-label">Urmăritori</div>
+    </div>
+    <div>
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Postări</div>
+    </div>
+    <div>
+      <div class="stat-num">#1</div>
+      <div class="stat-label">Hîncești</div>
+    </div>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-label fade-up">Ce oferim</div>
+  <h2 class="section-title fade-up">Servicii</h2>
+  <p class="services-desc fade-up">Tratamente profesionale pentru păr realizate cu produse de calitate superioară.</p>
+  <div class="service-list">
+    <div class="service-item fade-up">
+      <span class="service-num">01</span>
+      <div class="service-info">
+        <div class="service-name">Keratina Braziliană</div>
+        <div class="service-desc">Netezire profundă. Rezultate 4–6 luni. Potrivit pentru orice tip de păr.</div>
+      </div>
+      <div class="service-dot"></div>
+    </div>
+    <div class="service-item fade-up">
+      <span class="service-num">02</span>
+      <div class="service-info">
+        <div class="service-name">Botox pentru Păr</div>
+        <div class="service-desc">Refacerea fibrei capilare. Strălucire intensă și hidratare de durată.</div>
+      </div>
+      <div class="service-dot"></div>
+    </div>
+    <div class="service-item fade-up">
+      <span class="service-num">03</span>
+      <div class="service-info">
+        <div class="service-name">Coafare & Stilizare</div>
+        <div class="service-desc">Finisaj profesional adaptat formei feței și tipului tău de păr.</div>
+      </div>
+      <div class="service-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS VIDEOS -->
+<section class="process">
+  <div class="section-label fade-up">Cum lucrăm</div>
+  <h2 class="section-title fade-up">Procesul<br>nostru</h2>
+  <p class="process-intro fade-up">De la prima întâlnire până la rezultatul final — transparență și grijă la fiecare pas.</p>
+
+  <div class="video-stack">
+    <!-- VIDEO 1 -->
+    <div class="video-card fade-up" id="vc1">
+      <div class="video-placeholder">
+        <!-- Replace src with your real video file -->
+        <video
+          id="vid1"
+          src="video/video1.mp4"
+          playsinline
+          preload="metadata"
+          loop
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+          onerror="this.style.display='none'"
+        ></video>
+      </div>
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-overlay">
+        <div class="video-desc">Analizăm tipul de păr și alegem tratamentul potrivit.</div>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="video-card fade-up" id="vc2">
+      <div class="video-placeholder">
+        <video
+          id="vid2"
+          src="video/video2.mp4"
+          playsinline
+          preload="metadata"
+          loop
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+          onerror="this.style.display='none'"
+        ></video>
+      </div>
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-overlay">
+        <div class="video-desc">Aplicare precisă, strat cu strat, pentru un rezultat uniform.</div>
+      </div>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div class="video-card fade-up" id="vc3">
+      <div class="video-placeholder">
+        <video
+          id="vid3"
+          src="video/video3.mp4"
+          playsinline
+          preload="metadata"
+          loop
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+          onerror="this.style.display='none'"
+        ></video>
+      </div>
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-overlay">
+        <div class="video-desc">Păr perfect drept, strălucitor și sănătos — de la prima vizită.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="section-label fade-up">Despre noi</div>
+  <h2 class="section-title fade-up">Studioul<br>de keratin<br>nr.1</h2>
+
+  <blockquote class="about-highlight fade-up">
+    "Fiecare client pleacă cu părul pe care și l-a visat."
+  </blockquote>
+
+  <p class="about-body fade-up">
+    VIAL STUDIO este salonul de referință din Hîncești pentru tratamente de îndreptare cu keratina și botox pentru păr. Cu o echipă dedicată și produse de top, oferim rezultate care durează.
+  </p>
+
+  <div class="about-detail-grid fade-up">
+    <div class="about-detail">
+      <div class="about-detail-icon">⏱️</div>
+      <div class="about-detail-title">Durabilitate</div>
+      <div class="about-detail-text">Rezultate vizibile 4–6 luni de la prima vizită</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-icon">🌿</div>
+      <div class="about-detail-title">Produse premium</div>
+      <div class="about-detail-text">Formule profesionale, fără compromisuriide calitate</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-icon">💆‍♀️</div>
+      <div class="about-detail-title">Personalizat</div>
+      <div class="about-detail-text">Tratament adaptat tipului tău de păr</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-icon">📍</div>
+      <div class="about-detail-title">Hîncești</div>
+      <div class="about-detail-text">Locul #1 din oraș pentru keratin & botox</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="section-label fade-up">Contact</div>
+  <h2 class="section-title fade-up">Contactează-ne</h2>
+  <p class="contact-sub fade-up">Sună-ne sau scrie pe Instagram.<br>Răspundem rapid.</p>
+
+  <div class="contact-cta fade-up">
+    <a href="tel:0798051710" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.2 2 2 0 012.09.006h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+      </svg>
+      0798 05 171
+    </a>
+
+    <div class="contact-divider">sau</div>
+
+    <a href="https://instagram.com/vial.keratin.studio" target="_blank" rel="noopener" class="btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      Instagram
+    </a>
+  </div>
+
+  <div class="contact-address fade-up">
+    VIAL STUDIO<br>
+    Hîncești 3401, Moldova
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Vial Studio</span>
+  <span class="footer-copy">© 2025</span>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Video tap-to-play
+  document.querySelectorAll('.video-card').forEach(card => {
+    const video = card.querySelector('video');
+    if (!video) return;
+
+    card.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        card.classList.add('playing');
+      } else {
+        video.pause();
+        card.classList.remove('playing');
+      }
+    });
+
+    video.addEventListener('ended', () => {
+      card.classList.remove('playing');
+    });
+  });
+</script>
+</body>
+</html>
